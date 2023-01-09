@@ -1,13 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import PolyContractDeploy from "./Polygon/PolyContractDeploy";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// import App from "./App";
+// import OldApp from "./OldApp";
+// import Web3App from "./Web3App";
+
+import reportWebVitals from "./reportWebVitals";
+// import Web3App2 from "./Web3App2";
+// import MintNft from "./scripts/MintNft";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <OldApp /> */}
+    {/* <App /> */}
+    <PolyContractDeploy />
+    {/* <Web3App /> */}
+    {/* <Web3App2 /> */}
+    {/* <MintNft /> */}
   </React.StrictMode>
 );
 
