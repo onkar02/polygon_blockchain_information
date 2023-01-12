@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import abi from "./ABI.json";
 import { ethers, ContractFactory } from "ethers";
-import Web3 from "web3";
 import { bytecode } from "./byteCode";
 // using ethers insted of web3 for deploying contract
 const PolyContractDeploy = () => {
@@ -14,7 +13,6 @@ const PolyContractDeploy = () => {
   const contractAddress = "0xe665191fbad788ad244a069bf2f5f64ba58bc2e5";
   const [transferAmount, setTransferAmount] = useState(0);
   console.log("transferAmount: ", transferAmount);
-  const web3 = new Web3();
   //   bytecode of our contract taken from remix
 
   const connectMetamask = async () => {
@@ -35,7 +33,7 @@ const PolyContractDeploy = () => {
       const contract = new ethers.Contract(contractAddress, abi, signer);
       setContract(contract);
       //   we are calling this function to deploy the contract on polygon testnet mumbai
-      //   deploy(abi, bytecode, signer);
+      deploy(abi, bytecode, signer);
     }
   };
 
@@ -45,11 +43,9 @@ const PolyContractDeploy = () => {
     console.log("abi: ", abi);
     console.log("bytecode: ", bytecode);
     const factory = new ContractFactory(abi, bytecode, signer);
-    // 0x6eA86d648270FB7513bbD3b551b8E5cB1eC2e964
+    console.log("factory: ", factory);
     const contract = await factory.deploy();
     console.log("contract address: ", contract.address);
-
-    console.log("contract deploy transaction: ", contract.deployTransaction);
     const deployTransactionvar = await contract.deployTransaction.wait();
     console.log("deployTransactionvar: ", deployTransactionvar);
   };
